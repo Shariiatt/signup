@@ -1,0 +1,165 @@
+:root {
+    --accent-color : rgb(67, 6, 6);
+    --base-color: rgb(225, 197, 197);
+    --text-color : rgb(126, 135, 126);
+    --input-color : rgb(243, 214, 214);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12pt;
+    color: var(--text-color);
+    text-align: center;
+}
+
+body{
+    min-height: 100vh;
+    background-image: url("background.jpg");
+    background-size: cover;
+    background-position: right;
+    overflow: hidden;
+}
+
+.wrapper {
+    box-sizing: border-box;
+    background-color: transparent;
+    backdrop-filter: blur(30px);
+    height : 100vh;
+    width: max(40%, 400px);
+    padding: 10px;
+    border-radius: 0 20px 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    color: beige;
+    font-size: 2em;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+form {
+    width : 400px;
+    margin-top: 10px;
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+form > div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+
+form label {
+    flex-shrink: 0;
+    height : 60px;
+    width: 50px;
+    background-color: var(--accent-color);
+    fill: var(--base-color);
+    color : var(--base-color);
+    border-radius: 10px 0 0 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+form input {
+    box-sizing: border-box;
+    flex-grow: 1;
+    min-width: 0;
+    width: 50px;
+    height: 60px;
+    padding: 10px;
+    font: inherit;
+    border-radius: 0 10px 10px 0;
+    border-left: none;
+    border: none;
+    background-color: var(--input-color);
+}
+
+form input:hover {
+    border-color:  var(--accent-color);
+    border-left: none;
+}
+
+form input:focus {
+    outline: none;
+    border: 1px solid var(--text-color);
+}
+
+div:has(input:focus) > label {
+    background-color: var(--text-color);
+}
+
+form input::placeholder {
+    color: rgb(7, 48, 7);
+    opacity: 1;
+}
+
+form button {
+    margin-top: 10px;
+    border: none;
+    border-radius: 1000px;
+    padding: .85em 4em;
+    background-color: var(--accent-color);
+    color: var(--base-color);
+    font: inherit;
+    font-weight: 500;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: 150ms ease;
+}
+
+
+form button:hover {
+    background-color: var(--text-color);
+}
+
+form button:focus {
+    outline: none;
+    background-color: var(--text-color);
+}
+
+a {
+    text-decoration: none;
+    color: beige;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+@media(max-width: 1100px){
+    .wrapper{
+        width: min(600px, 100%);
+        border-radius: none;
+    }
+}
+
+form div.incorrect label{
+    background-color: red;
+}
+
+form div.incorrect input{
+    border: 1px solid red;
+}
+
+#errorMessage {
+    color: red;
+    font-weight: 200;
+}
