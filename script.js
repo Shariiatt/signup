@@ -5,7 +5,7 @@ var password = document.getElementById("password");
 var repeat_password = document.getElementById("repeat-password");
 var errorMessage = document.getElementById("errorMessage");
 
-
+var re = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/i;
 
 form.addEventListener("submit",(e) => {
 
@@ -37,6 +37,12 @@ function getSignUpErrors(firstName, Email, Password, RepeatPassword){
         errors.push('Email is required');
         email.parentElement.classList.add('incorrect');
     }
+
+    if(!(re.test(Email))){
+        errors.push("Invalid email format, email should require @ character and . like domain@pk.com");
+        email.parentElement.classList.add('incorrect');
+    }
+
     if(Password === '' || Password === null) {
         errors.push('Password is required');
         password.parentElement.classList.add('incorrect');
@@ -63,6 +69,10 @@ function getLoginErrors(Email,Password){
 
     if(Email === '' || Email === null) {
         errors.push('Email is required');
+        email.parentElement.classList.add('incorrect');
+    }
+    if(!(re.test(Email))){
+        errors.push("Invalid email format, email should require @ character and . like domain@pk.com");
         email.parentElement.classList.add('incorrect');
     }
     if(Password === '' || Password === null) {
